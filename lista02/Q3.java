@@ -1,61 +1,36 @@
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 
 public class Q3 {
-  public static String readFile(String origin) {
-    String strUTF8 = null;
-    
+  public static void main(String[] args){    
     try {
-      FileInputStream file = new FileInputStream(origin);
+      FileInputStream file = new FileInputStream(args[0]);
       InputStreamReader isr = new InputStreamReader(file, "ISO-8859-1");
       BufferedReader br = new BufferedReader(isr);
-      
-      strUTF8 = null;
-      String strISO = br.readLine();
+      String s = br.readLine();
 
-      while (strISO != null) {
-        byte[] isoBytes = strISO.getBytes("ISO-8859-1");
+      PrintStream ps = new PrintStream(args[1]);
 
-        String value = new String(isoBytes, "UTF-8"); 
-        if(strUTF8 == null){
-          strUTF8 = value;
-        }else{
-          strUTF8 += value;       
+      while (s != null) {
+        try {
+            s = new String(s.getBytes("ISO-8859-1"), "UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+            System.out.println("Encoding conversion filed.");
         }
-        strISO = br.readLine();
+
+        ps.println(s);
+        s = br.readLine();
       }
-      br.close(); 
+
+      br.close();
+      ps.close();
     } catch (IOException e) {
       System.err.println("File opening failed.");
       e.printStackTrace();
     }
-
-    return strUTF8;
-  }
-
-  public static void writeFile(String text, String out_file) {
-    try {
-      OutputStream os = new FileOutputStream(out_file);
-      OutputStreamWriter osw = new OutputStreamWriter(os);
-      BufferedWriter bw = new BufferedWriter(osw);
-
-      bw.write(text);
-      bw.newLine();
-
-      bw.close();
-    } catch (IOException e) {
-      System.err.println("File writing failed.");
-      e.printStackTrace();
-    }
-  }
-
-  public static void main(String[] args){
-    writeFile(readFile(args[0]), args[1]);
   }
 }
