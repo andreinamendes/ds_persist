@@ -1,4 +1,5 @@
-package ds_persist.lista01;
+package lista01;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;

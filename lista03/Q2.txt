@@ -1,0 +1,50 @@
+2. Escolha e baixe um arquivo csv a partir do link e use-o nas questões a seguir. Na resolução desta questão, não enviar os arquivos envolvidos, mas somente os resultados pedidos em arquivo texto com extensão txt. Envie somente o link do arquivo CSV escolhido.
+  -> Gere as somas checksum, md5, sha1 e sha256 do arquivo csv escolhido, usando utilitários de linha de comando do próprio sistema operacional ou instalado nele.  
+  -> Compare os tempos de execução e tamanhos dos arquivos gerados. Dica: para obter o tempo de execução, use o comando time.
+  Exemplo: time md5sum iris.csv
+
+RESPOSTA
+_________________________________________________________________________________
+Dataset: 2014_02-Traffic_Sensors_Fortaleza.csv
+Link dataset: https://zenodo.org/record/3469741/files/2014_02-Traffic_Sensors_Fortaleza.csv?download=1
+SO: Windows 11
+_________________________________________________________________________________
+md5:
+
+Comando: time certUtil -hashfile 2014_02-Traffic_Sensors_Fortaleza.csv MD5
+
+Resultado:
+MD5 hash de 2014_02-Traffic_Sensors_Fortaleza.csv:
+60d226ddbc2e1850417305ceaca2680c
+CertUtil: -hashfile : comando concluído com êxito.
+
+real    0m0,892s
+user    0m0,000s
+sys     0m0,000s
+_________________________________________________________________________________
+sha1:
+
+Comando: time certUtil -hashfile 2014_02-Traffic_Sensors_Fortaleza.csv sha1
+
+Resultado:
+SHA1 hash de 2014_02-Traffic_Sensors_Fortaleza.csv:
+a814c42b80cd7844e3a45d66e49738431f230f4e
+CertUtil: -hashfile : comando concluído com êxito.
+
+real    0m0,858s
+user    0m0,000s
+sys     0m0,000s
+_________________________________________________________________________________
+sha256:
+
+Comando: time certUtil -hashfile 2014_02-Traffic_Sensors_Fortaleza.csv sha256
+
+Resultado:
+SHA256 hash de 2014_02-Traffic_Sensors_Fortaleza.csv:
+9f31a3672b6dbef7d83b049554a32858a9acd53df6a461f038e174b53986d215
+CertUtil: -hashfile : comando concluído com êxito.
+
+real    0m0,466s
+user    0m0,015s
+sys     0m0,000s
+_________________________________________________________________________________
